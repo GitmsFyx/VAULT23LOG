@@ -2,7 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="LOG.App"
              xmlns:local="using:LOG"
-             RequestedThemeVariant="Default">
+             RequestedThemeVariant="Default"
+             >
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
@@ -11,5 +12,43 @@
   
     <Application.Styles>
         <FluentTheme />
+        
+        <Style Selector="Window">
+            <Setter Property="Background" Value="Black"></Setter>
+            <Setter Property="Padding" Value="12"></Setter>
+        </Style>
+        <Style Selector="TextBlock" >
+            <Setter Property="Foreground" Value="SpringGreen"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="TextAlignment" Value="Left"></Setter>
+        </Style>
+        
+        <Style Selector="Button">
+            <Setter Property="Foreground" Value="SpringGreen"></Setter>
+            <Setter Property="Background" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="BorderBrush" Value="#FF5722"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+        
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="Foreground" Value="Blue"></Setter>
+        </Style>
+        
+        <Style Selector="ListBoxItem">
+            <Setter Property="Padding" Value="0"></Setter>
+            <!--<Setter Property="Margin" Value="6"></Setter>-->
+        </Style>   
+
+        <Style Selector="ListBoxItem:pointerover>TextBlock">
+            <Setter Property="Background" Value="SpringGreen"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+        </Style>
+        
+        <Style Selector="ListBox">
+            <!--<Setter Property="Padding" Value="12"></Setter>-->
+        </Style>
+
+
     </Application.Styles>
 </Application>
