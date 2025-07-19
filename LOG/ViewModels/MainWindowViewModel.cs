@@ -1,19 +1,27 @@
-﻿using Avalonia.Controls;
+﻿using System.Dynamic;
+using System.Runtime.CompilerServices;
+using Avalonia.Controls;
 
 namespace LOG.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    public string Greeting { get; } = "欢迎访问 23号 终端!";
-
-    public string[] Options { get; } =
+    
+    private ViewModelBase _viewModel;
+    
+    public ViewModelBase ViewModel
     {
-        "[a]",
-        "[b]",
-        "[c]"
-    };
+        get => _viewModel;
+        set => SetProperty(ref _viewModel, value);
+    }
     
-    
-    
-    
+    public MainWindowViewModel()
+    {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        ViewModel = ServiceLocator.Instance.MainViewModel;
+    }
 }

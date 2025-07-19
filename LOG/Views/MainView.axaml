@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LOG.Views.MainView"
+             xmlns:vm="clr-namespace:LOG.ViewModels"
+             x:DataType="vm:MainViewModel">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>      
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
+        
+        <ListBox Grid.Row="2" 
+                 SelectionMode="Single" 
+                 ItemsSource="{Binding Options}"
+                 Background="Transparent"
+        >
+        </ListBox>
+    </Grid>
+    
+</UserControl>

@@ -22,5 +22,11 @@ build_property.EnableGeneratedComInterfaceComImportInterop =
 [/home/fs/RiderProjects/VAULT23LOG/LOG/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/fs/RiderProjects/VAULT23LOG/LOG/Views/MainWindow.axaml]
+[/home/fs/RiderProjects/VAULT23LOG/LOG/Views/DiaryView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/fs/RiderProjects/VAULT23LOG/LOG/Views/MainView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/fs/RiderProjects/VAULT23LOG/LOG/Views/MainWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
