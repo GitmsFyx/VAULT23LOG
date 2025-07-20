@@ -1,3 +1,4 @@
+using System;
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.Input;
 
@@ -15,12 +16,20 @@ public class MainViewModel : ViewModelBase
     }
     public Button[] Options { get; } =
     {
-        new Button(){Content = "[日志]"},
-        new Button(){Content = "[相册]"},
-        new Button(){Content = "[...]"},
+        new Button()
+        { 
+            Content = "[日志]",
+            Command = new RelayCommand(()=>
+            {
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.DialogViewModel;
+                Console.WriteLine("111");
+            })
+        },
+
+        new Button() {Content = "[相册]"},
+        new Button() {Content = "[...]"},
     };
     
-    //public RelayCommand Command;
     
     public MainViewModel()
     {

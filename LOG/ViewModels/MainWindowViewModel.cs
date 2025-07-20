@@ -1,11 +1,18 @@
 ﻿using System.Dynamic;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 
 namespace LOG.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    private string _time;
+    public string Time
+    {
+        get => _time;
+        set => SetProperty(ref _time, value);
+    }
     
     private ViewModelBase _viewModel;
     
@@ -18,10 +25,21 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         Initialize();
+        UpdateTimeAsync();
     }
 
     public void Initialize()
     {
+
         ViewModel = ServiceLocator.Instance.MainViewModel;
+    }
+    
+    public async Task UpdateTimeAsync()
+    {
+        while (true)
+        {
+            Time = System.DateTime.UtcNow.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss");
+            await Task.Delay(1000);
+        }
     }
 }

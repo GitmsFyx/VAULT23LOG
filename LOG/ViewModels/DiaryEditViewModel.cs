@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace LOG.ViewModels;
 
-public class DiaryViewModel: ViewModelBase
+public class DiaryEditViewModel :ViewModelBase
 {
-    public string Greeting { get; } = "已进入日志!";
+    public string Greeting { get; } = "日志编辑中...";
     
     private Button _selectedOption;
     public Button SelectedOption

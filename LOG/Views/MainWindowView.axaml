@@ -12,8 +12,10 @@
         Background="Black"
         x:DataType="vm:MainWindowViewModel"
         DataContext="{Binding Source={StaticResource ServiceLocator}, Path=MainWindowViewModel}"
-        Content="{Binding ViewModel}"
         >
-        
+        <StackPanel>
+                <TextBlock Text="{Binding Time}"></TextBlock>
+                <ContentControl Content="{Binding ViewModel}"></ContentControl>
+        </StackPanel>
     
 </Window>
