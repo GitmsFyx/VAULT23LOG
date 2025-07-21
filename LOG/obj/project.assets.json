@@ -4620,6 +4620,7 @@
       "Avalonia.Fonts.Inter >= 11.3.2",
       "Avalonia.Themes.Fluent >= 11.3.2",
       "CommunityToolkit.Mvvm >= 8.2.1",
+      "Microsoft.EntityFrameworkCore.Design >= 9.0.7",
       "Microsoft.EntityFrameworkCore.Sqlite >= 9.0.7",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.7",
       "Microsoft.Extensions.DependencyInjection >= 9.0.7"
@@ -4685,6 +4686,12 @@
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.2.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[9.0.7, )"
           },
           "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
