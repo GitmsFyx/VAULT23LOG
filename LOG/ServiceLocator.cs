@@ -1,5 +1,6 @@
 using System;
 using Avalonia;
+using LOG.Services;
 using LOG.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +15,8 @@ public class ServiceLocator
     public MainViewModel MainViewModel  => _serviceProvider.GetService<MainViewModel>();
     public MainWindowViewModel MainWindowViewModel=> _serviceProvider.GetService<MainWindowViewModel>();
     public DiaryViewModel DialogViewModel=> _serviceProvider.GetService<DiaryViewModel>();
+    public DiaryEditViewModel DiaryEditViewModel => _serviceProvider.GetService<DiaryEditViewModel>();
+    public HelloLogViewModel HelloLogViewModel => _serviceProvider.GetService<HelloLogViewModel>();
     
     public ServiceLocator()
     {
@@ -21,6 +24,9 @@ public class ServiceLocator
         services.AddSingleton<MainViewModel>();
         services.AddSingleton<MainWindowViewModel>();
         services.AddSingleton<DiaryViewModel>();
+        services.AddSingleton<DiaryEditViewModel>();
+        services.AddSingleton<HelloLogViewModel>();
+        services.AddDbContext<LogDbContext>();
 
         _serviceProvider = services.BuildServiceProvider();
         

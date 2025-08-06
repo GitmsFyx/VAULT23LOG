@@ -22,14 +22,13 @@ public class MainViewModel : ViewModelBase
             Command = new RelayCommand(()=>
             {
                 ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.DialogViewModel;
-                Console.WriteLine("111");
             })
         },
 
         new Button() {Content = "[相册]"},
         new Button() {Content = "[...]"},
+        
     };
-    
     
     public MainViewModel()
     {

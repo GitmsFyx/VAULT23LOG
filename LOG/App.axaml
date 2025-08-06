@@ -40,6 +40,7 @@
         
         <Style Selector="ListBox">
             <Setter Property="BorderBrush" Value="Transparent"></Setter>
+            <Setter Property="Background" Value="Black"></Setter>
         </Style>
         
         <Style Selector="ListBoxItem>Button:pointerover /template/ ContentPresenter">
@@ -54,6 +55,19 @@
         </Style>   
 
         <Style Selector="ListBoxItem:pointerover>TextBlock">
+            <Setter Property="Background" Value="LimeGreen"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+        </Style>
+        
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="Black"></Setter>
+            <Setter Property="Foreground" Value="LimeGreen"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+            <Setter Property="AcceptsReturn" Value="True"></Setter>
+        </Style>
+        
+        <Style Selector="TextBox:focus">
             <Setter Property="Background" Value="LimeGreen"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
         </Style>

@@ -31,7 +31,7 @@ public partial class MainWindowViewModel : ViewModelBase
     public void Initialize()
     {
 
-        ViewModel = ServiceLocator.Instance.MainViewModel;
+        ViewModel = ServiceLocator.Instance.HelloLogViewModel;
     }
     
     public async Task UpdateTimeAsync()

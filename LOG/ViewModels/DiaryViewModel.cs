@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using CommunityToolkit.Mvvm.Input;
 
 namespace LOG.ViewModels;
 
@@ -14,10 +15,24 @@ public class DiaryViewModel: ViewModelBase
     }
     public Button[] Options { get; } =
     {
-        new Button(){Content = "[添加日志]"},
+        new Button()
+        {
+            Content = "[添加日志]",
+            Command = new RelayCommand(() =>
+            {
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.DiaryEditViewModel;
+            })
+        },
         new Button(){Content = "[1.]"},
         new Button(){Content = "[2.]"},
-        new Button(){Content = "[3.]"}
-        ,
+        new Button(){Content = "[3.]"},
+        new Button()
+        {
+        Content = "[返回]",
+        Command = new RelayCommand(() =>
+        {
+            ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.MainViewModel;
+        })
+        },
     };
 }
