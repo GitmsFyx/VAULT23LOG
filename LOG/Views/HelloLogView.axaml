@@ -20,7 +20,7 @@
         
             <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
         
-            <TextBox Grid.Row="2" Text="输入你的名字"/>
+            <TextBox Grid.Row="2" Text="{Binding Name}"/>
         
             <ListBox Grid.Row="3" ItemsSource="{Binding Options}"></ListBox>
 

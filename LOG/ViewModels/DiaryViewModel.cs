@@ -23,7 +23,14 @@ public class DiaryViewModel: ViewModelBase
                 ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.DiaryEditViewModel;
             })
         },
-        new Button(){Content = "[1.]"},
+        new Button()
+        {
+            Content = "[查看日志]",
+            Command = new RelayCommand(() =>
+            {
+                
+            })
+        },
         new Button(){Content = "[2.]"},
         new Button(){Content = "[3.]"},
         new Button()
