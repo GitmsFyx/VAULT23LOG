@@ -30,7 +30,7 @@ build_property.EnableGeneratedComInterfaceComImportInterop =
 [/home/fs/RiderProjects/VAULT23LOG/LOG/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/fs/RiderProjects/VAULT23LOG/LOG/Views/DiaryEditView.axaml]
+[/home/fs/RiderProjects/VAULT23LOG/LOG/Views/DiaryAddView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/home/fs/RiderProjects/VAULT23LOG/LOG/Views/DiaryView.axaml]

@@ -20,11 +20,9 @@
         
         <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
         
-        <TextBox Grid.Row="2" Text="111" 
+        <ListBox Grid.Row="2" ItemsSource="{Binding LogsButton}" 
                  HorizontalAlignment="Stretch" 
                  VerticalAlignment="Center"
-                 HorizontalContentAlignment="Left"
-                 MaxLength="200"
         />
         
         <ListBox Grid.Row="3" 

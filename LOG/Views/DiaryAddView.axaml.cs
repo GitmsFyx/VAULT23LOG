@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace LOG.Views;
 
-public partial class DiaryEditView : UserControl
+public partial class DiaryAddView : UserControl
 {
-    public DiaryEditView()
+    public DiaryAddView()
     {
         InitializeComponent();
     }

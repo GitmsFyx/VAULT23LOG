@@ -19,13 +19,7 @@ public class HelloLogViewModel : ViewModelBase
         get => _name; 
         set => SetProperty(ref _name, value); 
     } 
-    
-    private Button _selectedOption;
-    public Button SelectedOption
-    {
-        get=>_selectedOption;
-        set=>SetProperty(ref _selectedOption, value);
-    }
+
 
     public ObservableCollection<Button> Options { get; } = new ObservableCollection<Button>();
 

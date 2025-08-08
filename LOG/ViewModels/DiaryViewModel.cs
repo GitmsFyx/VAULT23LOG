@@ -5,14 +5,8 @@ namespace LOG.ViewModels;
 
 public class DiaryViewModel: ViewModelBase
 {
-    public string Greeting { get; } = "已进入日志!";
+    public string Greeting { get; } = "已进入日志系统!";
     
-    private Button _selectedOption;
-    public Button SelectedOption
-    {
-        get=>_selectedOption;
-        set=>SetProperty(ref _selectedOption, value);
-    }
     public Button[] Options { get; } =
     {
         new Button()
@@ -20,7 +14,7 @@ public class DiaryViewModel: ViewModelBase
             Content = "[添加日志]",
             Command = new RelayCommand(() =>
             {
-                ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.DiaryEditViewModel;
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.DiaryAddViewModel;
             })
         },
         new Button()
@@ -28,7 +22,8 @@ public class DiaryViewModel: ViewModelBase
             Content = "[查看日志]",
             Command = new RelayCommand(() =>
             {
-                
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.ShowLogViewModel;
+                ServiceLocator.Instance.ShowLogViewModel.AddLog();
             })
         },
         new Button(){Content = "[2.]"},

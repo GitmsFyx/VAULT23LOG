@@ -8,28 +8,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LOG.ViewModels;
 
-public class DiaryEditViewModel :ViewModelBase
+public class DiaryAddViewModel :ViewModelBase
 {
-    public string Greeting { get; } = "日志编辑中...";
+    public string Greeting { get; } = "日志添加中...";
 
     private string _currentContent;
     public string CurrentContent
     {
         get => _currentContent;
-        set=>SetProperty(ref _currentContent, value);}
-    
-    private Button _selectedOption;
-    public Button SelectedOption
-    {
-        get=>_selectedOption;
-        set=>SetProperty(ref _selectedOption, value);
+        set=>SetProperty(ref _currentContent, value);
     }
+    
 
     public ObservableCollection<Button> Options { get; } = new ObservableCollection<Button>();
 
     private LogDbContext _dbContext;
     
-    public DiaryEditViewModel(LogDbContext dbContext)
+    public DiaryAddViewModel(LogDbContext dbContext)
     {
         _dbContext = dbContext;
         Options.Add(new Button()

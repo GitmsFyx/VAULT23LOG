@@ -15,8 +15,10 @@ public class ServiceLocator
     public MainViewModel MainViewModel  => _serviceProvider.GetService<MainViewModel>();
     public MainWindowViewModel MainWindowViewModel=> _serviceProvider.GetService<MainWindowViewModel>();
     public DiaryViewModel DialogViewModel=> _serviceProvider.GetService<DiaryViewModel>();
-    public DiaryEditViewModel DiaryEditViewModel => _serviceProvider.GetService<DiaryEditViewModel>();
+    public DiaryAddViewModel DiaryAddViewModel => _serviceProvider.GetService<DiaryAddViewModel>();
     public HelloLogViewModel HelloLogViewModel => _serviceProvider.GetService<HelloLogViewModel>();
+    
+    public ShowLogViewModel ShowLogViewModel => _serviceProvider.GetService<ShowLogViewModel>();
     
     public ServiceLocator()
     {
@@ -24,8 +26,9 @@ public class ServiceLocator
         services.AddSingleton<MainViewModel>();
         services.AddSingleton<MainWindowViewModel>();
         services.AddSingleton<DiaryViewModel>();
-        services.AddSingleton<DiaryEditViewModel>();
+        services.AddSingleton<DiaryAddViewModel>();
         services.AddSingleton<HelloLogViewModel>();
+        services.AddSingleton<ShowLogViewModel>();
         services.AddDbContext<LogDbContext>();
 
         _serviceProvider = services.BuildServiceProvider();
