@@ -10,5 +10,7 @@ public class People
     public string Name { get; set; }
 
     public ICollection<Log> Logs { get; } = new List<Log>();
+    
+    public ICollection<Photo> Photos { get; } = new List<Photo>();
 
 }

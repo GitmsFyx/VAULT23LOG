@@ -19,6 +19,7 @@ public class ServiceLocator
     public HelloLogViewModel HelloLogViewModel => _serviceProvider.GetService<HelloLogViewModel>();
     
     public ShowLogViewModel ShowLogViewModel => _serviceProvider.GetService<ShowLogViewModel>();
+    public PhotoViewModel PhotoViewModel => _serviceProvider.GetService<PhotoViewModel>();
     
     public ServiceLocator()
     {
@@ -29,7 +30,10 @@ public class ServiceLocator
         services.AddSingleton<DiaryAddViewModel>();
         services.AddSingleton<HelloLogViewModel>();
         services.AddSingleton<ShowLogViewModel>();
+        services.AddSingleton<PhotoViewModel>();
+        
         services.AddDbContext<LogDbContext>();
+        
 
         _serviceProvider = services.BuildServiceProvider();
         

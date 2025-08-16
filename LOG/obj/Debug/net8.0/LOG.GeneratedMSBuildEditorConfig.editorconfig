@@ -45,5 +45,8 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [/home/fs/RiderProjects/VAULT23LOG/LOG/Views/MainWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/home/fs/RiderProjects/VAULT23LOG/LOG/Views/PhotoView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/home/fs/RiderProjects/VAULT23LOG/LOG/Views/ShowLogView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

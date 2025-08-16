@@ -20,7 +20,14 @@ public class MainViewModel : ViewModelBase
             })
         },
 
-        new Button() {Content = "[相册]"},
+        new Button()
+        {
+            Content = "[相册]",
+            Command = new RelayCommand((() =>
+            {
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.PhotoViewModel;
+            }))
+        },
         new Button()
         {
             Content = "[退出]",

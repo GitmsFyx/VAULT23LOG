@@ -8,6 +8,8 @@ public class LogDbContext :DbContext
     public DbSet<Log> Logs { get; set; }
     public DbSet<People> Peoples { get; set; }
     
+    public DbSet<Photo> Photos { get; set; }
+    
     public LogDbContext(DbContextOptions<LogDbContext> options) : base(options)
     {
     }
@@ -23,6 +25,12 @@ public class LogDbContext :DbContext
             .HasMany(p=>p.Logs)
             .WithOne(l=>l.People)
             .HasForeignKey(l=>l.PeopleId)
+            .IsRequired();
+
+        modelBuilder.Entity<People>()
+            .HasMany(p => p.Photos)
+            .WithOne(p => p.People)
+            .HasForeignKey(p => p.PeopleId)
             .IsRequired();
     }
 }

@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 using LOG.Models;
 using LOG.Services;
 using Microsoft.EntityFrameworkCore;
+using Tmds.DBus.Protocol;
 
 namespace LOG.ViewModels;
 
@@ -19,6 +20,13 @@ public class DiaryAddViewModel :ViewModelBase
         set=>SetProperty(ref _currentContent, value);
     }
     
+    private string _TbWatermark = "请输入日志内容...";
+    
+    public string TbWatermark
+    {
+        get => _TbWatermark;
+        set => SetProperty(ref _TbWatermark, value);
+    }
 
     public ObservableCollection<Button> Options { get; } = new ObservableCollection<Button>();
 
@@ -32,6 +40,11 @@ public class DiaryAddViewModel :ViewModelBase
             Content = "[保存]",
             Command = new AsyncRelayCommand(async () =>
             {
+                if (String.IsNullOrEmpty(CurrentContent))
+                {
+                    TbWatermark = "内容不能为空";
+                    return;
+                }
                 try
                 {
                     var log = new Log()
