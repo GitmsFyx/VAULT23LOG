@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LOG.Views.PhotoView"
-                xmlns:vm="clr-namespace:LOG.ViewModels"
+             xmlns:vm="clr-namespace:LOG.ViewModels"
              x:DataType="vm:PhotoViewModel">
     <Grid>
         <Grid.RowDefinitions>
@@ -17,8 +17,6 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-        <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
-        
-
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Greeting}"/>
     </Grid>
 </UserControl>
