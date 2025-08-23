@@ -18,5 +18,10 @@
         </Grid.ColumnDefinitions>
         
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Greeting}"/>
+        
+        <ListBox Grid.Row="2"
+                 SelectionMode="Single"
+                 ItemsSource="{Binding Options}"
+                 />
     </Grid>
 </UserControl>

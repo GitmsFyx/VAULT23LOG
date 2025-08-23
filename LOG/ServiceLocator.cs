@@ -2,6 +2,7 @@ using System;
 using Avalonia;
 using LOG.Services;
 using LOG.ViewModels;
+using LOG.Views;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LOG;
@@ -21,6 +22,12 @@ public class ServiceLocator
     public ShowLogViewModel ShowLogViewModel => _serviceProvider.GetService<ShowLogViewModel>();
     public PhotoViewModel PhotoViewModel => _serviceProvider.GetService<PhotoViewModel>();
     
+    public ShowPhotoViewModel ShowPhotoViewModel => _serviceProvider.GetService<ShowPhotoViewModel>();
+    
+    public PhotoAddViewModel PhotoAddViewModel => _serviceProvider.GetService<PhotoAddViewModel>();
+    
+    public MainWindowView MainWindowView => _serviceProvider.GetService<MainWindowView>();
+    
     public ServiceLocator()
     {
         var services = new ServiceCollection();
@@ -31,6 +38,9 @@ public class ServiceLocator
         services.AddSingleton<HelloLogViewModel>();
         services.AddSingleton<ShowLogViewModel>();
         services.AddSingleton<PhotoViewModel>();
+        services.AddSingleton<ShowPhotoViewModel>();
+        services.AddSingleton<PhotoAddViewModel>();
+        services.AddSingleton<MainWindowView>();
         
         services.AddDbContext<LogDbContext>();
         
