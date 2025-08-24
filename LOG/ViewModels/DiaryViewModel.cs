@@ -23,7 +23,6 @@ public class DiaryViewModel: ViewModelBase
             Command = new RelayCommand(() =>
             {
                 ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.ShowLogViewModel;
-                ServiceLocator.Instance.ShowLogViewModel.AddLog();
             })
         },
         new Button(){Content = "[2.]"},

@@ -13,8 +13,8 @@ public class Photo
     public DateTime CreateTime { get; set; } = DateTime.Now;
     
     public byte[] Image { get; set; }
-    
-    public string Content { get; set; }
+
+    public string Content { get; set; } 
     
     public bool Visible { get; set; } = true;
 }

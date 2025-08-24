@@ -33,6 +33,8 @@ public class HelloLogViewModel : ViewModelBase
             {
                 Name = Name
             };
+            await _dbContext.Database.EnsureDeletedAsync();
+            await _dbContext.Database.EnsureCreatedAsync();
             await _dbContext.Peoples.AddAsync(people);
             await _dbContext.SaveChangesAsync();
             

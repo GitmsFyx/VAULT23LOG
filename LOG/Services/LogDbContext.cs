@@ -1,3 +1,5 @@
+using System;
+using Avalonia.Controls.Shapes;
 using LOG.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +19,8 @@ public class LogDbContext :DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite("Data Source=log.db");
+        Console.WriteLine(AppContext.BaseDirectory);
+
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

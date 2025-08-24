@@ -37,9 +37,10 @@ public class ShowLogViewModel: ViewModelBase
     public ShowLogViewModel(LogDbContext logDbContext)
     {
         _logDbContext = logDbContext;
+        ShowDiary();
     }
     
-    public void AddLog()
+    public void ShowDiary()
     {
         LogsButton.Clear();
         var logs = _logDbContext.Peoples.Include(p=>p.Logs).First().Logs;

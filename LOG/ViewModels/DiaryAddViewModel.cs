@@ -49,7 +49,7 @@ public class DiaryAddViewModel :ViewModelBase
                 {
                     var log = new Log()
                     {
-                        PeopleId = 0,
+                        PeopleId = 1,
                         People = await _dbContext.Peoples.FirstAsync(),
                         Content = CurrentContent,
 
