@@ -3,9 +3,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="LOG.Views.DiaryAddView"
+             x:Class="LOG.Views.ShowDiaryView"
              xmlns:vm="clr-namespace:LOG.ViewModels"
-             x:DataType="vm:DiaryAddViewModel">
+             x:DataType="vm:ShowDiaryViewModel">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -20,13 +20,10 @@
         
         <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
         
-        <TextBox Grid.Row="2" Text="{Binding CurrentContent}" 
+        <ListBox Grid.Row="2" ItemsSource="{Binding LogsButton}" 
                  HorizontalAlignment="Stretch" 
                  VerticalAlignment="Center"
-                 HorizontalContentAlignment="Left"
-                 MaxLength="200"
-                 Watermark="{Binding TbWatermark}"
-                 />
+        />
         
         <ListBox Grid.Row="3" 
                  SelectionMode="Single" 

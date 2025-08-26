@@ -22,11 +22,25 @@ public class DiaryViewModel: ViewModelBase
             Content = "[查看日志]",
             Command = new RelayCommand(() =>
             {
-                ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.ShowLogViewModel;
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.ShowDiaryViewModel;
             })
         },
-        new Button(){Content = "[2.]"},
-        new Button(){Content = "[3.]"},
+        new Button()
+        {
+            Content = "[修改日志]",
+            Command = new RelayCommand(() =>
+            {
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.ShowDiaryViewModel;
+            })
+        },
+        new Button()
+        {
+            Content = "[删除日志]",
+            Command = new RelayCommand(() =>
+            {
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.ShowDiaryViewModel;
+            })
+        },
         new Button()
         {
         Content = "[返回]",

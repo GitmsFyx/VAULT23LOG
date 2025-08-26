@@ -5,6 +5,53 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LOG.Views.ShowPhotoView"
              xmlns:vm="clr-namespace:LOG.ViewModels"
-             x:DataType="vm:ShowPhotoViewModel">
-    Welcome to Avalonia!
+             x:DataType="vm:ShowPhotoViewModel"
+             xmlns:h="clr-namespace:LOG.Helpers">
+    <UserControl.Resources>
+        <h:BytesToBItmap x:Key="BytesToBItmap"></h:BytesToBItmap>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>      
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
+        
+        <ListBox Grid.Row="2" ItemsSource="{Binding Photos}" 
+                 HorizontalAlignment="Stretch" 
+                 VerticalAlignment="Center"
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Image Grid.Column="0" Source="{Binding  Image,Converter={StaticResource BytesToBItmap}}"></Image>
+                        <TextBlock Grid.Column="1" Text="{Binding Content}"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <ListBox Grid.Row="3" 
+                 SelectionMode="Single" 
+                 ItemsSource="{Binding Options}"
+                 Background="Transparent">
+        </ListBox>
+        
+        
+    </Grid>
 </UserControl>

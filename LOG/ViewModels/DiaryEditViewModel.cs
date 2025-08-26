@@ -1,23 +1,25 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.Input;
+using LOG.Models;
 using LOG.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace LOG.ViewModels;
 
-public class ShowLogViewModel: ViewModelBase
+public class DiaryEditViewModel : ViewModelBase
 {
     public string Greeting { get; } = "欢迎查看日志!";
     
-    private ObservableCollection<Button> _logsButton = new ObservableCollection<Button>();
+    private ObservableCollection<Log> _logs = new ();
     
-    public ObservableCollection<Button> LogsButton
+    public ObservableCollection<Log> Logs
     {
-        get => _logsButton;
-        set => SetProperty(ref _logsButton, value);
+        get => _logs;
+        set => SetProperty(ref _logs, value);
     }
         
     public Button[] Options { get; } =
@@ -34,27 +36,20 @@ public class ShowLogViewModel: ViewModelBase
 
     private LogDbContext _logDbContext;
     
-    public ShowLogViewModel(LogDbContext logDbContext)
+    public DiaryEditViewModel(LogDbContext logDbContext)
     {
         _logDbContext = logDbContext;
-        ShowDiary();
+        ShowDiaries();
     }
     
-    public void ShowDiary()
+    public void ShowDiaries()
     {
-        LogsButton.Clear();
+        Logs.Clear();
         var logs = _logDbContext.Peoples.Include(p=>p.Logs).First().Logs;
         foreach (var log in logs)
         {
-            var button = new Button
-            {
-                Content = $"{log.CreateTime} - {log.Content.Substring(0, Math.Min(log.Content.Length, 10))}...",
-                Command = new RelayCommand(() =>
-                {
-
-                })
-            };
-            LogsButton.Add(button);
+            Logs.Add(log);
         }
+        
     }
 }

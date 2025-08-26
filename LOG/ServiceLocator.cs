@@ -19,7 +19,7 @@ public class ServiceLocator
     public DiaryAddViewModel DiaryAddViewModel => _serviceProvider.GetService<DiaryAddViewModel>();
     public HelloLogViewModel HelloLogViewModel => _serviceProvider.GetService<HelloLogViewModel>();
     
-    public ShowLogViewModel ShowLogViewModel => _serviceProvider.GetService<ShowLogViewModel>();
+    public ShowDiaryViewModel ShowDiaryViewModel => _serviceProvider.GetService<ShowDiaryViewModel>();
     public PhotoViewModel PhotoViewModel => _serviceProvider.GetService<PhotoViewModel>();
     
     public ShowPhotoViewModel ShowPhotoViewModel => _serviceProvider.GetService<ShowPhotoViewModel>();
@@ -36,7 +36,7 @@ public class ServiceLocator
         services.AddSingleton<DiaryViewModel>();
         services.AddSingleton<DiaryAddViewModel>();
         services.AddSingleton<HelloLogViewModel>();
-        services.AddSingleton<ShowLogViewModel>();
+        services.AddSingleton<ShowDiaryViewModel>();
         services.AddSingleton<PhotoViewModel>();
         services.AddSingleton<ShowPhotoViewModel>();
         services.AddSingleton<PhotoAddViewModel>();
