@@ -12,14 +12,14 @@ namespace LOG.ViewModels;
 
 public class DiaryEditViewModel : ViewModelBase
 {
-    public string Greeting { get; } = "欢迎查看日志!";
+    public string Greeting { get; } = "欢迎编辑日志!";
     
-    private ObservableCollection<Log> _logs = new ();
+    private ObservableCollection<Button> _logsButton = new ();
     
-    public ObservableCollection<Log> Logs
+    public ObservableCollection<Button> LogsButton
     {
-        get => _logs;
-        set => SetProperty(ref _logs, value);
+        get => _logsButton;
+        set => SetProperty(ref _logsButton, value);
     }
         
     public Button[] Options { get; } =
@@ -36,19 +36,35 @@ public class DiaryEditViewModel : ViewModelBase
 
     private LogDbContext _logDbContext;
     
+    public Log SelectedLog { get; set; }
     public DiaryEditViewModel(LogDbContext logDbContext)
     {
         _logDbContext = logDbContext;
+    }
+
+    public void Loaded()
+    {
         ShowDiaries();
     }
     
     public void ShowDiaries()
     {
-        Logs.Clear();
+        LogsButton.Clear();
         var logs = _logDbContext.Peoples.Include(p=>p.Logs).First().Logs;
         foreach (var log in logs)
         {
-            Logs.Add(log);
+            LogsButton.Add(new Button()
+            {
+                Content = $"{log.CreateTime} - {log.Content.Substring(0, Math.Min(log.Content.Length, 10))}...",
+                Command = new RelayCommand(() =>
+                {
+                    SelectedLog = log;
+                    var vm=ServiceLocator.Instance.DiaryChangeViewModel;
+                    vm.CurrentLog = SelectedLog;
+                    ServiceLocator.Instance.MainWindowViewModel.ViewModel = vm;
+
+                })
+            });
         }
         
     }

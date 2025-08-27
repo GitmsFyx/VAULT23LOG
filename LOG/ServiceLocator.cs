@@ -28,6 +28,9 @@ public class ServiceLocator
     
     public MainWindowView MainWindowView => _serviceProvider.GetService<MainWindowView>();
     
+    public DiaryEditViewModel DiaryEditViewModel => _serviceProvider.GetService<DiaryEditViewModel>();
+    
+    public DiaryChangeViewModel DiaryChangeViewModel => _serviceProvider.GetService<DiaryChangeViewModel>();
     public ServiceLocator()
     {
         var services = new ServiceCollection();
@@ -41,6 +44,9 @@ public class ServiceLocator
         services.AddSingleton<ShowPhotoViewModel>();
         services.AddSingleton<PhotoAddViewModel>();
         services.AddSingleton<MainWindowView>();
+        services.AddSingleton<DiaryEditViewModel>();
+        
+        services.AddTransient<DiaryChangeViewModel>();
         
         services.AddDbContext<LogDbContext>();
         
@@ -48,5 +54,4 @@ public class ServiceLocator
         _serviceProvider = services.BuildServiceProvider();
         
     } 
-    
 }

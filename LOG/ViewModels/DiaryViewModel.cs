@@ -30,7 +30,8 @@ public class DiaryViewModel: ViewModelBase
             Content = "[修改日志]",
             Command = new RelayCommand(() =>
             {
-                ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.ShowDiaryViewModel;
+                ServiceLocator.Instance.DiaryEditViewModel.ShowDiaries();
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.DiaryEditViewModel;;
             })
         },
         new Button()
