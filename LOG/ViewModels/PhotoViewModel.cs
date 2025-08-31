@@ -25,8 +25,15 @@ public class PhotoViewModel : ViewModelBase
                 ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.PhotoAddViewModel;
             })
         },
-        new Button(){Content = "[2.]"},
-        new Button(){Content = "[3.]"},
+        new Button()
+        {
+            Content = "[修改图片]",
+            Command = new RelayCommand((() =>
+            {
+                ServiceLocator.Instance.PhotoEditViewModel.Loaded();
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.PhotoEditViewModel;
+            }))
+        },
         new Button()
         {
             Content = "[返回]",

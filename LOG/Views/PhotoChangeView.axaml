@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LOG.Views.PhotoChangeView"
+             xmlns:vm="clr-namespace:LOG.ViewModels"
+             x:DataType="vm:PhotoChangeViewModel">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>      
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Greeting}"/>
+        
+        <Button Grid.Row="2" Grid.Column="0" Margin="0,0,0,15"
+                Height="30" 
+                HorizontalAlignment="Left" Background="LimeGreen"
+                Command="{Binding UploadPhotoCommand}">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Upload Photo Here" Foreground="Black"/>
+        </Button>
+        
+        <Border Grid.Row="3" Grid.Column="0" MinHeight="250" Background="Transparent">
+            <Image Source="{Binding ImageBitmap}"></Image> 
+        </Border>
+
+        
+        <TextBox Grid.Row="3" Grid.Column="1" Padding="10" Text="{Binding CurrentContent}"></TextBox>
+        
+        <ListBox Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"
+                 SelectionMode="Single"
+                 ItemsSource="{Binding Options }"
+        />
+        
+    </Grid>
+</UserControl>

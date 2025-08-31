@@ -64,6 +64,7 @@ public class PhotoAddViewModel :ViewModelBase
                     await _logDbContext.SaveChangesAsync();
                     Content = string.Empty;
                     ImageBitmap = null;
+                    ServiceLocator.Instance.ShowPhotoViewModel.ShowPhotos();
                     ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.PhotoViewModel;
                 }
                 catch (Exception e)

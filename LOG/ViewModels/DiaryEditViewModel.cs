@@ -24,6 +24,7 @@ public class DiaryEditViewModel : ViewModelBase
         
     public Button[] Options { get; } =
     {
+
         new Button()
         { 
             Content = "[返回]",
@@ -61,6 +62,7 @@ public class DiaryEditViewModel : ViewModelBase
                     SelectedLog = log;
                     var vm=ServiceLocator.Instance.DiaryChangeViewModel;
                     vm.CurrentLog = SelectedLog;
+                    vm.CurrentContent= SelectedLog.Content;
                     ServiceLocator.Instance.MainWindowViewModel.ViewModel = vm;
 
                 })

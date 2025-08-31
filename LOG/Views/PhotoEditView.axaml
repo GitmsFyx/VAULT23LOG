@@ -3,15 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="LOG.Views.ShowPhotoView"
+             x:Class="LOG.Views.PhotoEditView"
              xmlns:vm="clr-namespace:LOG.ViewModels"
-             x:DataType="vm:ShowPhotoViewModel"
-             xmlns:h="clr-namespace:LOG.Helpers"
-             >
-    <UserControl.Resources>
-        <h:BytesToBItmap x:Key="BytesToBItmap"></h:BytesToBItmap>
-    </UserControl.Resources>
-    <ScrollViewer MaxHeight="690" VerticalScrollBarVisibility="Auto">
+             x:DataType="vm:PhotoEditViewModel">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -26,10 +21,10 @@
         
         <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
         
-        <ListBox Grid.Row="2" ItemsSource="{Binding PhotosButton}" 
+        <ListBox Grid.Row="2" ItemsSource="{Binding PhotoButton}" 
                  HorizontalAlignment="Stretch" 
                  VerticalAlignment="Center"
-                 ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                 SelectedItem="{Binding SelectedPhoto}">
         </ListBox>
         
         <ListBox Grid.Row="3" 
@@ -37,7 +32,5 @@
                  ItemsSource="{Binding Options}"
                  Background="Transparent">
         </ListBox>
-        
     </Grid>
-    </ScrollViewer>
 </UserControl>

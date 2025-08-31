@@ -6,32 +6,34 @@
              x:Class="LOG.Views.DiaryAddView"
              xmlns:vm="clr-namespace:LOG.ViewModels"
              x:DataType="vm:DiaryAddViewModel">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="24"></RowDefinition>      
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        
-        <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
-        
-        <TextBox Grid.Row="2" Text="{Binding CurrentContent}" 
-                 HorizontalAlignment="Stretch" 
-                 VerticalAlignment="Center"
-                 HorizontalContentAlignment="Left"
-                 MaxLength="200"
-                 Watermark="{Binding TbWatermark}"
-                 />
-        
-        <ListBox Grid.Row="3" 
-                 SelectionMode="Single" 
-                 ItemsSource="{Binding Options}"
-                 Background="Transparent">
-        </ListBox>
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="24"></RowDefinition>      
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
+            
+            <TextBox Grid.Row="2" Text="{Binding CurrentContent}" 
+                     HorizontalAlignment="Stretch" 
+                     VerticalAlignment="Center"
+                     HorizontalContentAlignment="Left"
+                     MaxLength="200"
+                     Watermark="{Binding TbWatermark}"
+                     />
+            
+            <ListBox Grid.Row="3" 
+                     SelectionMode="Single" 
+                     ItemsSource="{Binding Options}"
+                     Background="Transparent">
+            </ListBox>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

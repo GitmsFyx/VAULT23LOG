@@ -50,4 +50,23 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\PhotoEditView.axaml.cs">
+        <DependentUpon>PhotoEditView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\PhotoChangeView.axaml.cs">
+        <DependentUpon>PhotoChangeView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\DiaryDetialView.axaml.cs">
+        <DependentUpon>DiaryDetailView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\PhotoDetialView.axaml.cs">
+        <DependentUpon>PhotoDetialView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
 </Project>

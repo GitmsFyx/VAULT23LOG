@@ -3,41 +3,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="LOG.Views.ShowPhotoView"
+             x:Class="LOG.Views.PhotoDetialView"
              xmlns:vm="clr-namespace:LOG.ViewModels"
-             x:DataType="vm:ShowPhotoViewModel"
-             xmlns:h="clr-namespace:LOG.Helpers"
-             >
+             x:DataType="vm:PhotoDetialViewModel"
+             xmlns:h="clr-namespace:LOG.Helpers">
     <UserControl.Resources>
         <h:BytesToBItmap x:Key="BytesToBItmap"></h:BytesToBItmap>
     </UserControl.Resources>
-    <ScrollViewer MaxHeight="690" VerticalScrollBarVisibility="Auto">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="24"></RowDefinition>      
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-        <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Greeting}"/>
         
-        <ListBox Grid.Row="2" ItemsSource="{Binding PhotosButton}" 
-                 HorizontalAlignment="Stretch" 
-                 VerticalAlignment="Center"
-                 ScrollViewer.HorizontalScrollBarVisibility="Auto">
-        </ListBox>
         
-        <ListBox Grid.Row="3" 
-                 SelectionMode="Single" 
-                 ItemsSource="{Binding Options}"
-                 Background="Transparent">
-        </ListBox>
+        <Border Grid.Row="3" Grid.Column="0" MinHeight="250" Background="Transparent">
+            <Image Source="{Binding CurrentPhoto.Image ,Converter={StaticResource BytesToBItmap }}"></Image> 
+        </Border>
+
+        
+        <TextBlock Grid.Row="3" Grid.Column="1" Padding="10" Text="{Binding Content}"></TextBlock>
+        
+        <ListBox Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"
+                 SelectionMode="Single"
+                 ItemsSource="{Binding Options }"
+        />
         
     </Grid>
-    </ScrollViewer>
+    
 </UserControl>

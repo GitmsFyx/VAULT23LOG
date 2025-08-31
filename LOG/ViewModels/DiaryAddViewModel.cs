@@ -69,7 +69,7 @@ public class DiaryAddViewModel :ViewModelBase
         Options.Add(new Button()
         {
             Content = "[返回]",
-            Command = new RelayCommand(() =>
+            Command = new RelayCommand(()=>
             {
                 ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.DialogViewModel;
             })

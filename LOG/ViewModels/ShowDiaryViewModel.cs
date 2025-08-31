@@ -37,7 +37,7 @@ public class ShowDiaryViewModel: ViewModelBase
     public ShowDiaryViewModel(LogDbContext logDbContext)
     {
         _logDbContext = logDbContext;
-        ShowDiaries();
+
     }
     
     public void ShowDiaries()
@@ -51,7 +51,9 @@ public class ShowDiaryViewModel: ViewModelBase
                 Content = $"{log.CreateTime} - {log.Content.Substring(0, Math.Min(log.Content.Length, 10))}...",
                 Command = new RelayCommand(() =>
                 {
-
+                    var vm=ServiceLocator.Instance.DiaryDetialViewModel;
+                    vm.CurrentLog = log;
+                    ServiceLocator.Instance.MainWindowViewModel.ViewModel = vm;
                 })
             };
             LogsButton.Add(button);

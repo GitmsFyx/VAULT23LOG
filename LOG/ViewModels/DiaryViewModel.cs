@@ -11,18 +11,19 @@ public class DiaryViewModel: ViewModelBase
     {
         new Button()
         {
-            Content = "[添加日志]",
+            Content = "[查看日志]",
             Command = new RelayCommand(() =>
             {
-                ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.DiaryAddViewModel;
+                ServiceLocator.Instance.ShowDiaryViewModel.ShowDiaries();
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.ShowDiaryViewModel;
             })
         },
         new Button()
         {
-            Content = "[查看日志]",
+            Content = "[添加日志]",
             Command = new RelayCommand(() =>
             {
-                ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.ShowDiaryViewModel;
+                ServiceLocator.Instance.MainWindowViewModel.ViewModel = ServiceLocator.Instance.DiaryAddViewModel;
             })
         },
         new Button()
@@ -32,14 +33,6 @@ public class DiaryViewModel: ViewModelBase
             {
                 ServiceLocator.Instance.DiaryEditViewModel.ShowDiaries();
                 ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.DiaryEditViewModel;;
-            })
-        },
-        new Button()
-        {
-            Content = "[删除日志]",
-            Command = new RelayCommand(() =>
-            {
-                ServiceLocator.Instance.MainWindowViewModel.ViewModel= ServiceLocator.Instance.ShowDiaryViewModel;
             })
         },
         new Button()

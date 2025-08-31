@@ -72,5 +72,9 @@
             <Setter Property="Foreground" Value="Black"></Setter>
         </Style>
         
+        <Style Selector="ScrollBar">
+            
+        </Style>
+        
     </Application.Styles>
 </Application>

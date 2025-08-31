@@ -1,6 +1,9 @@
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using Avalonia.Controls;
+using Avalonia.Layout;
+using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.Input;
 using LOG.Models;
 using LOG.Services;
@@ -12,12 +15,12 @@ public class ShowPhotoViewModel : ViewModelBase
 {
     public string Greeting { get; } = "欢迎查看照片!";
     
-    private ObservableCollection<Photo> _photos = new ();
+    private ObservableCollection<Button> _photosButton = new ();
     
-    public ObservableCollection<Photo> Photos
+    public ObservableCollection<Button> PhotosButton
     {
-        get => _photos;
-        set => SetProperty(ref _photos, value);
+        get => _photosButton;
+        set => SetProperty(ref _photosButton, value);
     }
         
     public Button[] Options { get; } =
@@ -42,17 +45,38 @@ public class ShowPhotoViewModel : ViewModelBase
     
     public void ShowPhotos()
     {
-        Photos.Clear();
+        PhotosButton.Clear();
 
         var photos = _logDbContext.Peoples.Include(p => p.Photos).First().Photos;
 
         foreach (var photo in photos)
         {
-            Photos.Add( 
-                new Photo()
+            PhotosButton.Add(
+                new Button()
                 {
-                    Content = $"{photo.CreateTime} \n {photo.Content.Substring(0, System.Math.Min(photo.Content.Length, 20))}...",
-                    Image = photo.Image
+                    Content = new StackPanel()
+                    {
+                        Orientation = Orientation.Horizontal,
+                        Children =
+                        {
+                            new Image()
+                            {
+                                Width = 250,
+                                Source = new Bitmap(new MemoryStream(photo.Image))
+                            },
+                            new TextBlock()
+                            {
+                                Text = $"{photo.CreateTime} \n {photo.Content}",
+                                HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center
+                            }
+                        },
+                    },
+                    Command = new RelayCommand(() =>
+                    {
+                        var vm = ServiceLocator.Instance.PhotoDetialViewModel;
+                        vm.CurrentPhoto = photo;
+                        ServiceLocator.Instance.MainWindowViewModel.ViewModel = vm;
+                    })
                 }
             );
         }

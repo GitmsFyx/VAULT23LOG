@@ -25,6 +25,7 @@
                  VerticalAlignment="Center"
                  HorizontalContentAlignment="Left"
                  MaxLength="200"
+                 CaretIndex="9999"
         />
         
         <ListBox Grid.Row="3" 
