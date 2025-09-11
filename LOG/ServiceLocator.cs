@@ -40,6 +40,12 @@ public class ServiceLocator
     
     public PhotoDetialViewModel PhotoDetialViewModel => _serviceProvider.GetService<PhotoDetialViewModel>();
     
+    public ArchiveViewModel ArchiveViewModel => _serviceProvider.GetService<ArchiveViewModel>();
+    
+    public ArchiveView ArchiveView => _serviceProvider.GetService<ArchiveView>();
+    
+    public LogDbContext LogDbContext => _serviceProvider.GetService<LogDbContext>();
+    
     public ServiceLocator()
     {
         var services = new ServiceCollection();
@@ -61,7 +67,8 @@ public class ServiceLocator
 
         services.AddTransient<DiaryDetialViewModel>();
         services.AddTransient<PhotoDetialViewModel>();
-        
+        services.AddSingleton<ArchiveViewModel>();
+        services.AddSingleton<ArchiveView>();
         
         services.AddDbContext<LogDbContext>();
         

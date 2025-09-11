@@ -6,7 +6,7 @@
              x:Class="LOG.Views.PhotoEditView"
              xmlns:vm="clr-namespace:LOG.ViewModels"
              x:DataType="vm:PhotoEditViewModel">
-    
+    <ScrollViewer MaxHeight="690">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -33,4 +33,5 @@
                  Background="Transparent">
         </ListBox>
     </Grid>
+    </ScrollViewer>
 </UserControl>

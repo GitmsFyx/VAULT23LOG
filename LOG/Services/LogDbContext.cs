@@ -12,6 +12,8 @@ public class LogDbContext :DbContext
     
     public DbSet<Photo> Photos { get; set; }
     
+    public DbSet<Archive> Archives { get; set; }
+    
     public LogDbContext(DbContextOptions<LogDbContext> options) : base(options)
     {
     }
@@ -19,8 +21,6 @@ public class LogDbContext :DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite("Data Source=log.db");
-        Console.WriteLine(AppContext.BaseDirectory);
-
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,6 +35,12 @@ public class LogDbContext :DbContext
             .HasMany(p => p.Photos)
             .WithOne(p => p.People)
             .HasForeignKey(p => p.PeopleId)
+            .IsRequired();
+
+        modelBuilder.Entity<Archive>()
+            .HasMany(a => a.Peoples)
+            .WithOne(p => p.Archive)
+            .HasForeignKey(p => p.ArchiveId)
             .IsRequired();
     }
 }

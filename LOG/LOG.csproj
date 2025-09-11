@@ -39,6 +39,7 @@
         </PackageReference>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.7" />
+        <PackageReference Include="Xaml.Behaviors.Avalonia" Version="11.3.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -66,6 +67,14 @@
       </Compile>
       <Compile Update="Views\PhotoDetialView.axaml.cs">
         <DependentUpon>PhotoDetialView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\ArchiveView.axaml.cs">
+        <DependentUpon>ArchiveView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\ArchiveEditDialog.axaml.cs">
+        <DependentUpon>ArchiveEditDialog.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>

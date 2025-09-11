@@ -6,6 +6,7 @@
              x:Class="LOG.Views.ShowDiaryView"
              xmlns:vm="clr-namespace:LOG.ViewModels"
              x:DataType="vm:ShowDiaryViewModel">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="690">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -31,4 +32,5 @@
                  Background="Transparent">
         </ListBox>
     </Grid>
+    </ScrollViewer>
 </UserControl>

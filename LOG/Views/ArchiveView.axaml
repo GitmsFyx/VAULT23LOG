@@ -1,0 +1,88 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LOG.Views.ArchiveView"
+             xmlns:vm="using:LOG.ViewModels"
+             x:DataType="vm:ArchiveViewModel"
+             x:Name="ArchiveViewControl"
+             >
+    <UserControl.DataContext>
+        <vm:ArchiveViewModel></vm:ArchiveViewModel>
+    </UserControl.DataContext>
+    
+    <Interaction.Behaviors>
+            <EventTriggerBehavior EventName="Loaded">
+                <InvokeCommandAction Command="{Binding  LoadArchivesCommand}"></InvokeCommandAction>
+            </EventTriggerBehavior>
+    </Interaction.Behaviors>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>      
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
+        
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" MaxWidth="800" VerticalScrollBarVisibility="Auto" MaxHeight="690" HorizontalAlignment="Left" Height="500">
+            <Grid HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column="0" 
+                        Command="{Binding AddArchiveCommand}"
+                        BorderThickness="5" BorderBrush="LimeGreen" Margin="5,0,5,0">
+                    <TextBlock Text="+"></TextBlock>
+                </Button>
+                
+                <ItemsControl Grid.Column="1" ItemsSource="{Binding Archives}" 
+                              VerticalAlignment="Top"
+                              >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="5" BorderBrush="LimeGreen" Margin="5,0,5,0">
+                                <StackPanel Orientation="Vertical" Margin="5,0,5,0" Width="200" >
+                                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"></TextBlock>
+                                    <ListBox  ItemsSource="{Binding Peoples}" SelectedItem="{Binding DataContext.SelectedPeople,ElementName=ArchiveViewControl}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                    <TextBlock Text="{Binding Name}" TextAlignment="Center" ></TextBlock>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                    <Button Content="添加"
+                                            Command="{Binding DataContext.EditArchiveCommand ,ElementName=ArchiveViewControl}"/>
+                                    <Button Content="删除" 
+                                            Command="{Binding DataContext.DeleteArchiveCommand,ElementName=ArchiveViewControl}"
+                                            CommandParameter="{Binding}"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </ScrollViewer>
+        
+        <ListBox Grid.Row="3"
+                 SelectionMode="Single"
+                 ItemsSource="{Binding Options}"
+                 Background="Transparent">
+        </ListBox>
+    </Grid>
+</UserControl>

@@ -29,6 +29,7 @@
             <Setter Property="TextAlignment" Value="Left"></Setter>
         </Style>
         
+        
         <Style Selector="Button">
             <Setter Property="BorderBrush" Value="Transparent"></Setter>
             <Setter Property="Foreground" Value="LimeGreen"></Setter>

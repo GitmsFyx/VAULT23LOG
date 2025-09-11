@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LOG.ViewModels;
 
-public class HelloLogViewModel : ViewModelBase
+public class HelloLogViewModel : ViewModelBase 
 {
     public string Greeting { get; } = "欢迎访问 23号 终端!";
     
@@ -31,7 +31,13 @@ public class HelloLogViewModel : ViewModelBase
         {
             var people=new People()
             {
-                Name = Name
+                Name = Name,
+                Archive = new Archive()
+                {
+                    Name = "0",
+                    Content = $"{Name}的日志归档",
+                }
+                
             };
             await _dbContext.Database.EnsureDeletedAsync();
             await _dbContext.Database.EnsureCreatedAsync();

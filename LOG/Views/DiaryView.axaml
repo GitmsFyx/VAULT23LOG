@@ -5,7 +5,12 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LOG.Views.DiaryView"
              xmlns:vm="using:LOG.ViewModels"
-             x:DataType="vm:DiaryViewModel">
+             x:DataType="vm:DiaryViewModel"
+             xmlns:b="using:LOG.Behaviors"
+             >
+    <Interaction.Behaviors>
+        <b:UserControlKeyDownBehavior></b:UserControlKeyDownBehavior>
+    </Interaction.Behaviors>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
