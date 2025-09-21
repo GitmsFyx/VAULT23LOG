@@ -6,9 +6,9 @@ using LOG.Models;
 
 namespace LOG.Views;
 
-public partial class ArchiveEditDialog : Window
+public partial class ArchiveAddPeopleDialog : Window
 {
-    public ArchiveEditDialog()
+    public ArchiveAddPeopleDialog()
     {
         InitializeComponent();
     }

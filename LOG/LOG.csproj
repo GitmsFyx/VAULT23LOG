@@ -73,8 +73,16 @@
         <DependentUpon>ArchiveView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
-      <Compile Update="Views\ArchiveEditDialog.axaml.cs">
+      <Compile Update="Views\ArchiveAddPeopleDialog.axaml.cs">
         <DependentUpon>ArchiveEditDialog.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\DeleteArchivePeopleDialog.axaml.cs">
+        <DependentUpon>DeleteArchivePeopleDialog.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\ShowArchivePeopleView.axaml.cs">
+        <DependentUpon>ShowArchivePeopleView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>

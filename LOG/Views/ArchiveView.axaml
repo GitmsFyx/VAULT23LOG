@@ -66,11 +66,15 @@
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
                                     </ListBox>
+                                    <Button Content="查看"
+                                            Command="{Binding DataContext.ShowArchivePeopleCommand ,ElementName=ArchiveViewControl}"
+                                            CommandParameter="{Binding DataContext.SelectedPeople.Id,ElementName=ArchiveViewControl}"/>
                                     <Button Content="添加"
-                                            Command="{Binding DataContext.EditArchiveCommand ,ElementName=ArchiveViewControl}"/>
+                                            Command="{Binding DataContext.AddArchivePeopleCommand ,ElementName=ArchiveViewControl}"
+                                            CommandParameter="{Binding Id}"/>
                                     <Button Content="删除" 
-                                            Command="{Binding DataContext.DeleteArchiveCommand,ElementName=ArchiveViewControl}"
-                                            CommandParameter="{Binding}"/>
+                                            Command="{Binding DataContext.DeleteArchivePeopleCommand,ElementName=ArchiveViewControl}"
+                                            CommandParameter="{Binding DataContext.SelectedPeople,ElementName=ArchiveViewControl}"/>
                                 </StackPanel>
                             </Border>
                         </DataTemplate>

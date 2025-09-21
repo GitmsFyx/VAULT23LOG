@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="225"
-        x:Class="LOG.Views.ArchiveEditDialog"
+        x:Class="LOG.Views.DeleteArchivePeopleDialog"
         Title="AddArchiveDialog"
         Width="400" Height="225">
     
@@ -14,11 +14,11 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         
-        <TextBlock Text="请输入名字"></TextBlock>
+        <TextBlock Text="你确定吗"></TextBlock>
         
-        <TextBox x:Name="Name" Grid.Row="1" Watermark="Name"></TextBox>
+        <Button Grid.Row="1" Content="Yes" HorizontalAlignment="Center" Click="Yes_Click"></Button>
 
-        <Button Grid.Row="2" Content="Sure" HorizontalAlignment="Center" Click="Close_Click"></Button>
+        <Button Grid.Row="2" Content="No" HorizontalAlignment="Center" Click="NO_Click"></Button>
         
     </Grid>
 </Window>

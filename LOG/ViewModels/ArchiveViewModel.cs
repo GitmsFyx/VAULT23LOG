@@ -24,9 +24,11 @@ public class ArchiveViewModel: ViewModelBase
     
     public RelayCommand AddArchiveCommand { get; }
     
-    public RelayCommand EditArchiveCommand{ get; }
+    public RelayCommand<int> AddArchivePeopleCommand{ get; }
     
-    public RelayCommand DeleteArchiveCommand { get; }
+    public RelayCommand<People> DeleteArchivePeopleCommand { get; }
+    
+    public RelayCommand<int> ShowArchivePeopleCommand { get; }
 
     private People _selectedPeople;
 
@@ -55,18 +57,53 @@ public class ArchiveViewModel: ViewModelBase
         _context = ServiceLocator.Instance.LogDbContext;
         LoadArchivesCommand = new RelayCommand(LoadArchives);
         AddArchiveCommand = new RelayCommand(AddArchive);
-        EditArchiveCommand= new RelayCommand(EditArchive);
-        DeleteArchiveCommand = new RelayCommand(DeleteArchive);
+        AddArchivePeopleCommand= new RelayCommand<int>(AddArchivePeople);
+        DeleteArchivePeopleCommand = new RelayCommand<People>(DeleteArchivePeople);
+        ShowArchivePeopleCommand= new RelayCommand<int>(ShowArchivePeople);
     }
 
-    private void DeleteArchive()
+    private void ShowArchivePeople(int id)
     {
-        Console.WriteLine(_selectedPeople.Name);
+        if (id == 0) return;
+        var archivePeopleViewModel = ServiceLocator.Instance.ShowArchivePeopleViewModel;
+        archivePeopleViewModel.PeopleID = id;
+        archivePeopleViewModel.Load();
+        ServiceLocator.Instance.MainWindowViewModel.ViewModel = archivePeopleViewModel;
+        
     }
 
-    private void EditArchive()
+    private async void DeleteArchivePeople(People people)
     {
-        Console.WriteLine("111");
+        if (people == null) return;
+
+        var deleteArchivePeopleDialog = new DeleteArchivePeopleDialog();
+        var YesOrNo= await deleteArchivePeopleDialog.ShowDialog<bool>(ServiceLocator.Instance.MainWindowView);
+        
+        if (!YesOrNo) return;
+        
+        var p = _context.Peoples.Find(people.Id);
+        
+        _context.Peoples.Remove(p);
+        _context.SaveChanges();
+        LoadArchives();
+    }
+
+    private async void AddArchivePeople(int id)
+    {
+        var archiveAddPeopleDialog = new ArchiveAddPeopleDialog();
+        var name =await archiveAddPeopleDialog.ShowDialog<String>(ServiceLocator.Instance.MainWindowView);
+        
+        if (string.IsNullOrWhiteSpace(name)) return;
+        
+        Console.WriteLine(name);
+
+        _context.Peoples.Add(new People()
+        {
+            Name = name,
+            ArchiveId = id
+        });
+        _context.SaveChanges();
+        LoadArchives();
     }
 
 
@@ -76,6 +113,8 @@ public class ArchiveViewModel: ViewModelBase
         
         var addArchiveDialog = new AddArchiveDialog();
         var archiveContent = await addArchiveDialog.ShowDialog<string>(ServiceLocator.Instance.MainWindowView);
+
+        if (string.IsNullOrWhiteSpace(archiveContent)) return;
         
         var newArchive = new Archive
         {

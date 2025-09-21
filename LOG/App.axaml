@@ -3,7 +3,8 @@
              x:Class="LOG.App"
              xmlns:local="using:LOG"
              RequestedThemeVariant="Default"
-             xmlns:vm="clr-namespace:LOG.ViewModels">
+             xmlns:vm="clr-namespace:LOG.ViewModels"
+             xmlns:helpers="clr-namespace:LOG.Helpers">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
     
              
@@ -13,6 +14,7 @@
   
     <Application.Resources>
         <local:ServiceLocator x:Key="ServiceLocator"></local:ServiceLocator>
+        <helpers:ShowArchiveMultiParameterConverter x:Key="ArchiveMultiParameterConverter"></helpers:ShowArchiveMultiParameterConverter>
     </Application.Resources>
     
     
@@ -40,6 +42,11 @@
         </Style>
         
         <Style Selector="ListBox">
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+            <Setter Property="Background" Value="Black"></Setter>
+        </Style>
+        
+        <Style Selector="ListBoxItem>ListBox">
             <Setter Property="BorderBrush" Value="Transparent"></Setter>
             <Setter Property="Background" Value="Black"></Setter>
         </Style>

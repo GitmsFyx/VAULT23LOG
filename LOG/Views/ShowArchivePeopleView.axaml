@@ -1,0 +1,81 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LOG.Views.ShowArchivePeopleView"
+             xmlns:vm="clr-namespace:LOG.ViewModels"
+             x:DataType="vm:ShowArchivePeopleViewModel"
+             d:DataContext="{d:DesignInstance vm:ShowArchivePeopleViewModel,IsDesignTimeCreatable=True}"
+             x:Name="ShowArchivePeopleViewControl">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="690">
+        
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>      
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="{Binding Greeting}"/>
+        
+        <StackPanel Grid.Row="2">
+            <ListBox ItemsSource="{Binding Logs}" >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBox  Grid.Row="0" Grid.Column="0"  Text="{Binding Content,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                            <Button Grid.Row="0" Grid.Column="1" Content="save" 
+                                    Command="{Binding DataContext.UpdateLogCommand, ElementName=ShowArchivePeopleViewControl}" >
+                                <Button.CommandParameter>
+                                    <MultiBinding Converter="{StaticResource ArchiveMultiParameterConverter}">
+                                        <Binding Path="Id"></Binding>
+                                        <Binding Path="Content" ></Binding>
+                                    </MultiBinding>
+                                </Button.CommandParameter>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding Content}" />
+                <Button Grid.Row="0" Grid.Column="1" Content="Add" 
+                        Command="{Binding  SaveNewLogCommand}" />
+            </Grid>
+
+        </StackPanel>
+        
+        <ListBox Grid.Row="3" 
+                 SelectionMode="Single" 
+                 ItemsSource="{Binding Options}"
+                 Background="Transparent">
+        </ListBox>
+    </Grid>
+    </ScrollViewer>
+</UserControl>
